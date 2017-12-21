@@ -1,0 +1,9 @@
+##YAML Template
+---
+default: BROWSER=chrome --format progress --format html --out=features_report.html
+
+# --format progress --format html --out=features_report.html
+# html_report: --format progress --format html --out=features_report.html
+# firefox: BROWSER=firefox
+# chrome: BROWSER=chrome
+# poltergeist: BROWSER=poltergeist
