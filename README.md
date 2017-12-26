@@ -1,6 +1,4 @@
 # test-web
-
-# bravi-test
 Testing ContaAzul application with Cucumber, Capybara, SitePrism in Ruby language
 
 
@@ -44,7 +42,7 @@ $ ruby -v
 ### Instalando o bundler ###
 Navegar dentro do projeto e instalar o bundler
 ```shell
-cd /bravi-test-rest
+cd /test-rest
 gem install bundler
 ```
 
@@ -68,29 +66,41 @@ sudo apt-get install phantomjs
 ### Executando os testes usando o Chrome (default) ###
 Execute o seguinte comando dentro da raiz do projeto:
 ```shell
-bundle exec cucumber features
+cucumber
 ```
 
 ### Executando tags ###
 Execute o seguinte comando dentro da raiz do projeto:
 ```shell
-bundle exec cucumber --tags @login_conta_azul @nova_compra
+bundle exec cucumber --tags @funcionalidade_basica
 ```
 
-### Executando os testes usando Firefox ###
+### Executando os testes usando Firefox, Poltergeist ###
 Execute o seguinte comando dentro da raiz do projeto:
 ```shell
-bundle exec cucumber -p firefox
-```
+cucumber -p firefox
 
-### Executando os testes usando Poltergeist ###
-Execute o seguinte comando dentro da raiz do projeto:
-```shell
-bundle exec cucumber -p poltergeist
+colocar em cucumber.yml uma das prorpiedades correspondentes: 
+
+# --format progress --format html --out=features_report.html
+# html_report: --format progress --format html --out=features_report.html
+# firefox: BROWSER=firefox
+# chrome: BROWSER=chrome
+# poltergeist: BROWSER=poltergeist
 ```
 
 ### Gerando relatório HTML ###
 Execute o seguinte comando dentro da raiz do projeto:
 ```shell
-bundle exec cucumber -p html_report
+colocar em cucumber.yml: 
+default: BROWSER=chrome --format progress --format html --out=features_report.html
+
+```
+
+### Não gerar relatório HTML ###
+Execute o seguinte comando dentro da raiz do projeto:
+```shell
+colocar em cucumber.yml: 
+default: BROWSER=chrome
+
 ```
