@@ -1,5 +1,6 @@
 home_page = HomePage.new
 oport_page = OportunidadePage.new
+oport_data = OportunidadeData.new
 
 Dado("que estou na tela de cadastro de oportunidades") do
     home_page.create.click
@@ -7,11 +8,11 @@ Dado("que estou na tela de cadastro de oportunidades") do
 end
 
 Quando("preencho os dados obrigatorios") do
-    oport_page.name.set 'name'
-    oport_page.account_name.set 'RR. Talker Co'
+    oport_page.name.set oport_data.name()
+    oport_page.account_name.set oport_data.acount_name()
     sleep 3
-    oport_page.date_closed.set '01/10/2020'
-    oport_page.amount.set '123'
+    oport_page.date_closed.set oport_data.date_closed()
+    oport_page.amount.set oport_data.amount()
 end
 
 Quando("clico em salvar") do
@@ -19,5 +20,5 @@ Quando("clico em salvar") do
 end
 
 Então("a oportunidade é salva corretamente") do
-    expect(page).to have_content('ACTIONS')
+    expect(page).to have_content(oport_data.actions())
 end
